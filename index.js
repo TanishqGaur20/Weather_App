@@ -229,7 +229,7 @@ function Animations() {
         stagger: 0.23
     })
 }
-// Animations();
+Animations();
 
 function fetchLocation() {
     let apiKey = '8253ad72e9e33eddee65652361af4b06';

@@ -1,6 +1,18 @@
+function showAlert(message) {
+    const customAlert = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
+    alertMessage.textContent = message;
+    customAlert.style.display = 'flex';
+}
+
+function closeAlert() {
+    const customAlert = document.getElementById('customAlert');
+    customAlert.style.display = 'none';
+}
 
 async function FetchData() {
 
+    loader.style.display = 'block';
     const apiKey = '8253ad72e9e33eddee65652361af4b06';
     const cityName = document.querySelector('input').value;
 
@@ -22,8 +34,10 @@ async function FetchData() {
         localStorage.setItem('cityNameArray', JSON.stringify(cityNameArray));
     }
     catch (err) {
-        alert('Invalid City Name')
+        showAlert('Invalid City Name. Please enter a valid city.');
         console.log(err);
+    } finally {
+        loader.style.display = 'none';
     }
 
 }
@@ -186,11 +200,7 @@ function Animations() {
         duration: 1,
         opacity: 0
     })
-    gsap.from('.halfLeftDashboard button', {
-        x: -200,
-        duration: 1,
-        opacity: 0
-    })
+
     gsap.from('.halfLeftDashboard p', {
         x: -200,
         duration: 1,
